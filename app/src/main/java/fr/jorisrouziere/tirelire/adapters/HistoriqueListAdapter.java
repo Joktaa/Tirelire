@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-import fr.jorisrouziere.tirelire.models.Historique;
+import fr.jorisrouziere.tirelire.room.models.Historique;
 
 public class HistoriqueListAdapter extends ListAdapter<Historique, HistoriqueViewHolder> {
 

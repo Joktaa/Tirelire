@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import fr.jorisrouziere.tirelire.R;
-import fr.jorisrouziere.tirelire.models.Historique;
+import fr.jorisrouziere.tirelire.room.models.Historique;
 
 public class HistoriqueViewHolder extends RecyclerView.ViewHolder{
 
