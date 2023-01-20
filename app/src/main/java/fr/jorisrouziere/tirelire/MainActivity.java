@@ -11,11 +11,14 @@ import android.widget.TextView;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import fr.jorisrouziere.tirelire.adapters.HistoriqueListAdapter;
 import fr.jorisrouziere.tirelire.room.Repository;
 import fr.jorisrouziere.tirelire.room.models.Historique;
-import fr.jorisrouziere.tirelire.room.models.Pieces;
+import fr.jorisrouziere.tirelire.room.models.Piece;
+import fr.jorisrouziere.tirelire.room.models.PieceType;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,22 +39,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Remplissage de la BDD
-        repository = new Repository(getApplicationContext());
-        Pieces newPieces = new Pieces();
-        newPieces.setUn(2);
-        newPieces.setDeux(3);
-        newPieces.setDix(4);
+        repository = Repository.getInstance(getApplicationContext());
+        Piece newPiece = new Piece(PieceType.EURO_2.getValue(),10);
+
         ArrayList<Historique> newHistorique = new ArrayList<>(Arrays.asList(
-                new Historique(LocalDateTime.now(), "DEPOT", 20.0),
-                new Historique(LocalDateTime.now(), "RETRAIT", 10.0),
-                new Historique(LocalDateTime.now(), "DEPOT", 30.0)
+                new Historique(LocalDateTime.now(), Historique.ActionType.DEPOSIT.getValue(), 20.0),
+                new Historique(LocalDateTime.now(), Historique.ActionType.WITHDRAW.getValue(), 10.0),
+                new Historique(LocalDateTime.now(),  Historique.ActionType.DEPOSIT.getValue(),  30.0)
         ));
-        repository.insertOnePieces(newPieces);
+        repository.insertOnePieces(newPiece);
         repository.insertAllHistoriques(newHistorique);
 
         stockEuros = findViewById(R.id.stock_text);
         repository.getPieces().observe(this, (pieces) -> {
-            stockEuros.setText(pieces.get(0).getSomme().toString() + "€");
+            stockEuros.setText(Objects.requireNonNull(repository.getPieces().getValue()).stream().mapToDouble(Piece::getTotalValue).sum() + "€");
         });
 
         historiqueList = findViewById(R.id.historique_list);

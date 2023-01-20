@@ -5,9 +5,11 @@
     android:id="@+id/home_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    tools:context=".HomeActivity" >
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        tools:context=".HomeActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -47,7 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/home_refreshButton">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/home_owningQuantity"
                 android:textAlignment="center"
@@ -66,7 +68,7 @@
             android:id="@+id/home_textTimeSinceLastWithdraw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/neverWithdrawn"
+            android:text="@string/neverWithdraw"
             app:layout_constraintBottom_toTopOf="@+id/return_block"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -5,7 +5,8 @@
 
     <string name="home_owningQuantity">Vous avez</string>
     <string name="home_defaultOwingQuantity">0€</string>
-    <string name="neverWithdrawn">Vous n\'avez pas encore fait de retrait! </string>
+    <string name="neverWithdraw">Vous n\'avez pas encore fait de retrait! </string>
+    <string name="lastWithdrawDoneThe">Votre dernier retrait était le %s !</string>
     <string name="withdrawn">Rendre</string>
     <string name="history">Historique</string>
     <string name="contentDescription_refresh">Rafraichissement des données</string>

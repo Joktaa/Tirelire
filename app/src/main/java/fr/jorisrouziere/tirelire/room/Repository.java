@@ -9,28 +9,38 @@ import java.util.List;
 import fr.jorisrouziere.tirelire.room.dao.HistoriqueDAO;
 import fr.jorisrouziere.tirelire.room.dao.PiecesDAO;
 import fr.jorisrouziere.tirelire.room.models.Historique;
-import fr.jorisrouziere.tirelire.room.models.Pieces;
+import fr.jorisrouziere.tirelire.room.models.Piece;
 
-public class Repository {
+public final class Repository {
+
+    private static Repository repository;
 
     private final PiecesDAO piecesDAO;
     private final HistoriqueDAO historiqueDAO;
 
-    public Repository(Context context) {
+    static public Repository getInstance(Context context)
+    {
+        if(repository == null )
+            repository = new Repository(context);
+
+        return repository;
+    }
+
+    private Repository(Context context) {
         TirelireDatabase db = TirelireDatabase.getDatabase(context);
         piecesDAO = db.piecesDAO();
         historiqueDAO = db.historiqueDAO();
     }
 
-    public void insertOnePieces(Pieces pieces) {
-        TirelireDatabase.DATABASE_WRITE_EXECUTOR.execute(() -> piecesDAO.insertOne(pieces));
+    public void insertOnePieces(Piece piece) {
+        TirelireDatabase.DATABASE_WRITE_EXECUTOR.execute(() -> piecesDAO.insertOne(piece));
     }
 
-    public void updateOnePiece(Pieces pieces) {
-        TirelireDatabase.DATABASE_WRITE_EXECUTOR.execute(() -> piecesDAO.update(pieces));
+    public void updateOnePiece(Piece piece) {
+        TirelireDatabase.DATABASE_WRITE_EXECUTOR.execute(() -> piecesDAO.update(piece));
     }
 
-    public LiveData<List<Pieces>> getPieces() {
+    public LiveData<List<Piece>> getPieces() {
         return piecesDAO.getPieces();
     }
 
