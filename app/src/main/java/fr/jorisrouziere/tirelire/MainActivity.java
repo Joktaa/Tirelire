@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         repository.getHistoriques().observe(this, adapter::submitList);
 
 
-        npEuros = findViewById(R.id.np_euros);
-        npCentimes = findViewById(R.id.np_centimes);
+        npEuros = findViewById(R.id.withdrawn_np_euros);
+        npCentimes = findViewById(R.id.withdraw_np_centimes);
 
         npEuros.setMinValue(0);
         npCentimes.setMinValue(0);
