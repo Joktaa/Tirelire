@@ -9,17 +9,17 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import fr.jorisrouziere.tirelire.room.models.Pieces;
+import fr.jorisrouziere.tirelire.room.models.Piece;
 
 @Dao
 public interface PiecesDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertOne(Pieces pieces);
+    void insertOne(Piece piece);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    void update(Pieces pieces);
+    void update(Piece piece);
 
-    @Query("SELECT * FROM pieces")
-    LiveData<List<Pieces>> getPieces();
+    @Query("SELECT * FROM piece")
+    LiveData<List<Piece>> getPieces();
 }

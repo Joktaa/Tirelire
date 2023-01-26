@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Tirelire</string>
+
+    <string name="euro_symbol">€</string>
+
+    <string name="home_owningQuantity">Vous avez</string>
+    <string name="home_defaultOwingQuantity">0€</string>
+    <string name="neverWithdraw">Vous n\'avez pas encore fait de retrait! </string>
+    <string name="lastWithdrawDoneThe">Votre dernier retrait était le %s !</string>
+    <string name="withdrawn">Rendre</string>
+    <string name="history">Historique</string>
+    <string name="contentDescription_refresh">Rafraichissement des données</string>
+    <string name="template_daysSinceLastWithdrawn">Cela fait ## jours depuis votre dernier retrait!</string>
+    <string name="withdraw_titleName">Retrait</string>
+    <string name="home">Accueil</string>
+    <string name="withdrawn_withdrawn">Rendre</string>
+    <string name="backtohomebutton">backToHomeButton</string>
+    <string name="history_titleName">Historique</string>
+    <string name="history_3lastMonth">3 derniers mois</string>
+    <string name="history_last30Days">30 dernier jours</string>
+    <string name="history_yesterday">Hier</string>
+    <string name="history_6lastMonth">6 dernies mois</string>
+    <string name="history_7lastDays">7 denriers jours</string>
+    <string name="history_today">Aujourd\'hui</string>
+    <string name="history_12lastMonths">12 derniers mois</string>
+    <string name="history_24lastMonths">24 derniers mois</string>
+    <string name="history_preciseHistory">Historique précis</string>
+    <string name="date">DATE</string>
+    <string name="type">TYPE</string>
+    <string name="withdrawn_detailedWithdrawButton">Préciser des pièces</string>
 </resources>

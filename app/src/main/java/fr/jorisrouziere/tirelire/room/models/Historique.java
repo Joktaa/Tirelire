@@ -67,4 +67,18 @@ public class Historique implements Serializable {
     public void setMontant(Double montant) {
         this.montant = montant;
     }
+
+    public enum ActionType{
+        WITHDRAW("Retrait"), DEPOSIT("dépot");
+
+        private final String value;
+
+        ActionType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
 }

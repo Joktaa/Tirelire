@@ -13,11 +13,11 @@ import java.util.concurrent.Executors;
 import fr.jorisrouziere.tirelire.room.dao.HistoriqueDAO;
 import fr.jorisrouziere.tirelire.room.dao.PiecesDAO;
 import fr.jorisrouziere.tirelire.room.models.Historique;
-import fr.jorisrouziere.tirelire.room.models.Pieces;
+import fr.jorisrouziere.tirelire.room.models.Piece;
 
 @Database(
         entities = {
-                Pieces.class,
+                Piece.class,
                 Historique.class
         },
         version = 1, exportSchema = false)
