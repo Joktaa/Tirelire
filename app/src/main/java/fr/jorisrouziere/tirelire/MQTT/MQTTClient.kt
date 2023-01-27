@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
+import org.json.JSONObject
 
 // https://medium.com/swlh/android-and-mqtt-a-simple-guide-cb0cbba1931c
 
@@ -22,6 +23,7 @@ class MQTTClient(context: Context?,
     }
     private val defaultCbClient = object : MqttCallback {
         override fun messageArrived(topic: String?, message: MqttMessage?) {
+            Json.readJson(message.toString(), context);
             Log.d(this.javaClass.name, "Receive message: ${message.toString()} from topic: $topic")
         }
 
