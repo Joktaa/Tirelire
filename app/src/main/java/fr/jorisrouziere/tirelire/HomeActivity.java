@@ -1,5 +1,7 @@
 package fr.jorisrouziere.tirelire;
 
+import static android.content.Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -74,7 +76,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void loadTestData() {
         //TODO to remove, only test
-        repository.insertOnePieces(new Piece(PieceType.EURO_2.getValue(), 2));
+        repository.insertOnePieces(new Piece(PieceType.EURO_1.getValue(), 0));
+        repository.insertOnePieces(new Piece(PieceType.EURO_2.getValue(), 0));
+        repository.insertOnePieces(new Piece(PieceType.CENTIME_10.getValue(), 0));
+        repository.insertOnePieces(new Piece(PieceType.CENTIME_20.getValue(), 0));
+        repository.insertOnePieces(new Piece(PieceType.CENTIME_50.getValue(), 0));
         repository.insertOneHistorique(new Historique(LocalDateTime.of(2022, 12, 14, 04, 43), Historique.ActionType.DEPOSIT.getValue(), 10.0));
         repository.insertOneHistorique(new Historique(LocalDateTime.of(2022, 12, 14, 11, 43), Historique.ActionType.WITHDRAW.getValue(), 10.0));
 

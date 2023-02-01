@@ -28,4 +28,10 @@
     <string name="date">DATE</string>
     <string name="type">TYPE</string>
     <string name="withdrawn_detailedWithdrawButton">Préciser des pièces</string>
+    <string name="Withdrawn_10_centimes">10 centimes</string>
+    <string name="Withdrawn_20_centimes">20 centimes</string>
+    <string name="Withdrawn_50_centimes">50 centimes</string>
+    <string name="Withdrawn_1_euro">1 euro    </string>
+    <string name="Withdrawn_2_euros">2 euros</string>
+    <string name="validate">Valider</string>
 </resources>
