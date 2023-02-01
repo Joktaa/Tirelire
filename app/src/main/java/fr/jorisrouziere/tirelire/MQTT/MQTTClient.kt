@@ -12,7 +12,7 @@ class MQTTClient(context: Context?,
                  serverURI: String,
                  clientID: String = "") {
     private var mqttClient = MqttAndroidClient(context, serverURI, clientID)
-    private val defaultCbConnect = object : IMqttActionListener {
+    public val defaultCbConnect = object : IMqttActionListener {
         override fun onSuccess(asyncActionToken: IMqttToken?) {
             Log.d(this.javaClass.name, "(Default) Connection success")
         }
@@ -21,6 +21,8 @@ class MQTTClient(context: Context?,
             Log.d(this.javaClass.name, "Connection failure: ${exception.toString()}")
         }
     }
+
+
     private val defaultCbClient = object : MqttCallback {
         override fun messageArrived(topic: String?, message: MqttMessage?) {
             Json.readJson(message.toString(), context);
@@ -35,6 +37,7 @@ class MQTTClient(context: Context?,
             Log.d(this.javaClass.name, "Delivery completed")
         }
     }
+
     private val defaultCbSubscribe = object : IMqttActionListener {
         override fun onSuccess(asyncActionToken: IMqttToken?) {
             Log.d(this.javaClass.name, "Subscribed to topic")
@@ -72,7 +75,8 @@ class MQTTClient(context: Context?,
         }
     }
 
-    fun connect(username:   String               = "",
+    //@JvmOverloads sert à utliser les param par défault kotlin en java
+    @JvmOverloads fun connect(username:   String               = "",
                 password:   String               = "",
                 cbConnect:  IMqttActionListener  = defaultCbConnect,
                 cbClient:   MqttCallback         = defaultCbClient) {
@@ -92,7 +96,7 @@ class MQTTClient(context: Context?,
         return mqttClient.isConnected
     }
 
-    fun subscribe(topic:        String,
+    @JvmOverloads fun subscribe(topic:        String,
                   qos:          Int                 = 1,
                   cbSubscribe:  IMqttActionListener = defaultCbSubscribe) {
         try {
@@ -102,7 +106,7 @@ class MQTTClient(context: Context?,
         }
     }
 
-    fun unsubscribe(topic:          String,
+    @JvmOverloads fun unsubscribe(topic:          String,
                     cbUnsubscribe:  IMqttActionListener = defaultCbUnsubscribe) {
         try {
             mqttClient.unsubscribe(topic, null, cbUnsubscribe)
@@ -111,7 +115,7 @@ class MQTTClient(context: Context?,
         }
     }
 
-    fun publish(topic:      String,
+    @JvmOverloads fun publish(topic:      String,
                 msg:        String,
                 qos:        Int                 = 1,
                 retained:   Boolean             = false,
@@ -127,7 +131,7 @@ class MQTTClient(context: Context?,
         }
     }
 
-    fun disconnect(cbDisconnect: IMqttActionListener = defaultCbDisconnect ) {
+    @JvmOverloads fun disconnect(cbDisconnect: IMqttActionListener = defaultCbDisconnect ) {
         try {
             mqttClient.disconnect(null, cbDisconnect)
         } catch (e: MqttException) {

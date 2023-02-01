@@ -91,7 +91,15 @@ public class Json {
         return new String("{\n" +
                 "   \"server\":{\n" +
                 "      \"action\":\"requestHistoryServer\",\n" +
-                "      \"timestampLastUpdate\":\"long\"\n" +
+                "   }\n" +
+                "}");
+    }
+
+    public static String historic(long timestampLastUpdate) {
+        return new String("{\n" +
+                "   \"server\":{\n" +
+                "      \"action\":\"requestHistoryServer\",\n" +
+                "      \"timestampLastUpdate\":\""+timestampLastUpdate+"\"\n" +
                 "   }\n" +
                 "}");
     }
@@ -100,7 +108,15 @@ public class Json {
         return new String("{\n" +
                 "   \"server\":{\n" +
                 "      \"action\":\"requestData\",\n" +
-                "      \"timestampLastUpdate\":\"long\"\n" +
+                "   }\n" +
+                "}");
+    }
+
+    public static String allData(long timestampLastUpdate) {
+        return new String("{\n" +
+                "   \"server\":{\n" +
+                "      \"action\":\"requestData\",\n" +
+                "      \"timestampLastUpdate\":\""+timestampLastUpdate+"\"\n" +
                 "   }\n" +
                 "}");
     }
