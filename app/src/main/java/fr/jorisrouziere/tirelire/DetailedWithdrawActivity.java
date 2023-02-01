@@ -28,7 +28,6 @@ public class DetailedWithdrawActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra("detailedWithdrawData", detailedWithdrawData);
-        intent.putExtra("test","test");
         setResult(RESULT_OK, intent);
         finish();
 
