@@ -17,9 +17,10 @@ public interface PiecesDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOne(Piece piece);
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    void update(Piece piece);
+    @Query("UPDATE piece SET number = number +:newNumber WHERE value=:value")
+    void updateNumber(double value, long newNumber);
 
-    @Query("SELECT * FROM piece")
+    @Query("SELECT * FROM piece;")
     LiveData<List<Piece>> getPieces();
+
 }

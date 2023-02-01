@@ -18,9 +18,8 @@ public final class Repository {
     private final PiecesDAO piecesDAO;
     private final HistoriqueDAO historiqueDAO;
 
-    static public Repository getInstance(Context context)
-    {
-        if(repository == null )
+    static public Repository getInstance(Context context) {
+        if (repository == null)
             repository = new Repository(context);
 
         return repository;
@@ -37,14 +36,12 @@ public final class Repository {
     }
 
     public void updateOnePiece(Piece piece) {
-        TirelireDatabase.DATABASE_WRITE_EXECUTOR.execute(() -> piecesDAO.update(piece));
+        TirelireDatabase.DATABASE_WRITE_EXECUTOR.execute(() -> piecesDAO.updateNumber(piece.getValue(), piece.getNumber()));
     }
 
     public LiveData<List<Piece>> getPieces() {
         return piecesDAO.getPieces();
     }
-
-
 
 
     public void insertAllHistoriques(List<Historique> historiqueList) {

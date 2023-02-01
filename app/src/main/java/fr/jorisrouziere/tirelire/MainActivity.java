@@ -1,6 +1,7 @@
 package fr.jorisrouziere.tirelire;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import fr.jorisrouziere.tirelire.adapters.HistoriqueListAdapter;
@@ -52,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         stockEuros = findViewById(R.id.stock_text);
         repository.getPieces().observe(this, (pieces) -> {
-            stockEuros.setText(Objects.requireNonNull(repository.getPieces().getValue()).stream().mapToDouble(Piece::getTotalValue).sum() + "€");
+            LiveData<List<Piece>> piecesLive = repository.getPieces();
+            if(piecesLive!= null && piecesLive.getValue() != null)
+            stockEuros.setText(piecesLive.getValue().stream().mapToDouble(Piece::getTotalValue).sum() + "€");
         });
 
         historiqueList = findViewById(R.id.historique_list);
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         npEuros = findViewById(R.id.withdrawn_np_euros);
-        npCentimes = findViewById(R.id.withdraw_np_centimes);
+        npCentimes = findViewById(R.id.withdrawn_np_centimes);
 
         npEuros.setMinValue(0);
         npCentimes.setMinValue(0);
