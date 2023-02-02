@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDateTime;
 
+import fr.jorisrouziere.tirelire.mqtt.MqttClient;
 import fr.jorisrouziere.tirelire.room.Repository;
 import fr.jorisrouziere.tirelire.room.models.Historique;
 import fr.jorisrouziere.tirelire.room.models.Piece;
@@ -20,7 +21,7 @@ import fr.jorisrouziere.tirelire.room.models.PieceType;
 public class HomeActivity extends AppCompatActivity {
 
     private Repository repository;
-
+    private MqttClient mqttClient;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         repository = Repository.getInstance(getApplicationContext());
+        mqttClient = MqttClient.getInstance(getApplicationContext());
 
         initData();
         initListener();
