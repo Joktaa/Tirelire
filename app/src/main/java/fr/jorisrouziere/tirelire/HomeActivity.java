@@ -1,17 +1,16 @@
 package fr.jorisrouziere.tirelire;
 
-import static android.content.Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.time.LocalDateTime;
 
+import androidx.appcompat.app.AppCompatActivity;
+import fr.jorisrouziere.tirelire.MQTT.MQTTApplicationClient;
+import fr.jorisrouziere.tirelire.MQTT.MQTTClient;
 import fr.jorisrouziere.tirelire.room.Repository;
 import fr.jorisrouziere.tirelire.room.models.Historique;
 import fr.jorisrouziere.tirelire.room.models.Piece;
@@ -20,6 +19,7 @@ import fr.jorisrouziere.tirelire.room.models.PieceType;
 public class HomeActivity extends AppCompatActivity {
 
     private Repository repository;
+    private MQTTClient clientMqtt;
 
 
     @Override
@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         repository = Repository.getInstance(getApplicationContext());
+        clientMqtt = MQTTApplicationClient.getInstance(getApplicationContext());
 
         initData();
         initListener();

@@ -10,6 +10,8 @@ const val MQTT_SERVER_URI       = "tcp://broker.hivemq.com:1883"
 const val MQTT_CLIENT_ID        = ""
 const val MQTT_USERNAME         = ""
 const val MQTT_PWD              = ""
+const val MQTT_MAIN_TOPIC       = ""
+const val MQTT_QOS              = 1
 
 const val MQTT_TEST_TOPIC       = "test/topic"
 const val MQTT_TEST_MSG         = "Hello!"
